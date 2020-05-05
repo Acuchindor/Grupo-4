@@ -1,8 +1,71 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+*{
+  margin: 0;
+  padding: 0;
 }
-
-a {
-  color: #00B7FF;
+body{
+  background: #3c3c3c;
+}
+header{
+  margin: 0;
+  background: #7a7a7a;
+  font-size: 5rem;
+  padding: 10px;
+  text-align: center;
+}
+#markers{
+  background: #5c5c5c;
+  display: flex;
+  flex-flow: row;
+}
+#markers li{
+  flex: 1;
+  list-style: none;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.5rem;
+  border-right: #3c3c3c solid 3px;
+}
+#markers li:nth-child(1){
+  font-weight: bold;
+  flex: 2;
+  border-left: #3c3c3c solid 3px;
+}
+#markers li:hover{
+  background: #7a7a7a;
+  transition: background-color 0.1s ease-in;
+  cursor: pointer;
+}
+section{
+  align-items: center;
+  margin: 100px 50px 50px;
+}
+div{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+div *{
+  flex: 1;
+}
+div img{
+  max-width: 100%;
+}
+div div:nth-child(1){
+  transform: scaleX(-1);
+}
+div div:nth-child(2){
+  flex: 2;
+}
+.nombre {
+  justify-content: center;
+  font-size: 2rem;
+  background: orange;
+  margin: 5px 30%;
+  padding: 5px;
+}
+.botones{
+  background: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  float: right;
 }
