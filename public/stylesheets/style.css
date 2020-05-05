@@ -69,3 +69,13 @@ div div:nth-child(2){
   padding: 10px 20px;
   float: right;
 }
+form{
+  background: #7a7a7a;
+  display: flex;
+  flex-flow: column;
+  margin: 0 50% 0 0;
+}
+form *{
+  padding: 7px;
+  flex: 1;
+}
