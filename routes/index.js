@@ -15,13 +15,11 @@ router.post('/register', function (req, res) {
   var username = req.body.username;
   var passwd = req.body.passwd;
   var repasswd = req.body.passwd;
-  // console.log('usuario = '+username+' email ='+ email);
-
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
     var usuario = new User({email: email, username: username, password: passwd})
     usuario.save(function (err, user) {
       if (err) return console.error(err);
-      console.log(usuario.username + "guardado");
+      console.log(user.username + "guardado");
     })
   }else{
     console.log('No funciona');
