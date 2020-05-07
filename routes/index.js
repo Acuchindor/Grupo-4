@@ -23,18 +23,11 @@ router.post('/register', function (req, res) {
   var passwd = req.body.passwd;
   var repasswd = req.body.passwd;
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
-    var usuario = new User({email: email, username: username, password: passwd});
-    usuario.save(function (err, user) {
-      if (err) {
-        return console.error(err);
-      }
-      else{
-        res.sendFile(path.join('C:/Users/crist/Desktop/untitled/public/login.html'));
-      }
-    })
+      var usuario = new User({email: email, username: username, password: passwd});
+      usuario.save();
+      return res.status(400).send('Registrado!');
   }else{
-    console.log('No funciona');
-    res.sendFile(path.join('C:/Users/crist/Desktop/untitled/public/registro.html'));
+    return res.status(400).send('Inutil!');
   }
 });
 module.exports = router;
