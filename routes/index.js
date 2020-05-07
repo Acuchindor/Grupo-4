@@ -9,8 +9,6 @@ mongoose.connect("mongodb://localhost:27017/MONGOL", {
   "pass": "Almi123",
   "useMongoClient": true
 });
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -27,11 +25,16 @@ router.post('/register', function (req, res) {
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
     var usuario = new User({email: email, username: username, password: passwd});
     usuario.save(function (err, user) {
-      if (err) return console.error(err);
-      console.log(user.username + " guardado");
+      if (err) {
+        return console.error(err);
+      }
+      else{
+        res.sendFile(path.join('C:/Users/crist/Desktop/untitled/public/login.html'));
+      }
     })
   }else{
     console.log('No funciona');
+    res.sendFile(path.join('C:/Users/crist/Desktop/untitled/public/registro.html'));
   }
 });
 module.exports = router;
