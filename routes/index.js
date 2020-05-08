@@ -24,8 +24,10 @@ router.post('/register', function (req, res) {
   var repasswd = req.body.passwd;
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
       var usuario = new User({email: email, username: username, password: passwd});
-      usuario.save();
-      return res.status(400).send('Registrado!');
+      usuario.save(function (err) {
+        if (err) return res.status(400).send('Inutil!');
+        else return res.status(400).send('Registrado!');
+      });
   }else{
     return res.status(400).send('Inutil!');
   }
