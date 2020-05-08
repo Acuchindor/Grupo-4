@@ -1,4 +1,5 @@
 var express = require('express');
+var registroHTML = 'C:/Users/crist/Desktop/untitled/public/registro.html';
 var router = express.Router();
 var path = require('path');
 var User = require('../lib/User');
@@ -14,7 +15,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/register', function (req, res) {
-  res.sendFile(path.join('C:/Users/crist/Desktop/untitled/public/registro.html'));
+  res.sendFile(path.join(registroHTML));
 });
 router.post('/register', function (req, res) {
   var email = req.body.email;
@@ -25,7 +26,7 @@ router.post('/register', function (req, res) {
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
       var usuario = new User({email: email, username: username, password: passwd});
       usuario.save(function (err) {
-        if (err) res.send('¡Ese usuario o email ya esta registrado!');
+        if (err) res.send('¡Este usuario o email ya ha sido registrado!');
         else res.send('¡Has sido registrado!');
         res.end();
       });
