@@ -38,7 +38,7 @@ router.post('/register', function (req, res) {
 router.post('/login', function (req, res) {
   var username = req.body.username;
   var passwd = req.body.passwd;
-  User.exists({username: username, password: passwd}, function(err, result){
+  mongoose.usuarios.exists({username: username, password: passwd}, function(err, result){
     if (err){
       res.render('../public/login.ejs',{error:'Usuario o contraseña equivocados.'});
     }else{
