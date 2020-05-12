@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/register', function (req, res) {
-  res.render('public/registro.ejs',{error:''});
+  res.render('../public/registro.ejs',{error:''});
 });
 router.post('/register', function (req, res) {
   var email = req.body.email;
@@ -25,11 +25,11 @@ router.post('/register', function (req, res) {
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
     var usuario = new User({email: email, username: username, password: passwd});
     usuario.save(function (err) {
-        if (err) res.render('public/registro.ejs', {error: 'Imbecil!'});
-        else res.render('public/registro.ejs', {error: '¡Has sido registrado!'});
+        if (err) res.render('../public/registro.ejs', {error: 'Imbecil!'});
+        else res.render('../public/registro.ejs', {error: '¡Has sido registrado!'});
       });
   }else{
-    res.render('registro',{ error: '¡El email o la password no coinciden!'});
+    res.render('../public/registro.ejs',{ error: '¡El email o la password no coinciden!'});
   }
 });
 module.exports = router;
