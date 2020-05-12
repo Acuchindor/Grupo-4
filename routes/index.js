@@ -16,6 +16,9 @@ router.get('/', function(req, res, next) {
 router.get('/register', function (req, res) {
   res.render('../public/registro.ejs',{error:''});
 });
+router.get('/login', function (req, res) {
+  res.render('../public/login.ejs',{error:''});
+});
 router.post('/register', function (req, res) {
   var email = req.body.email;
   var reemail = req.body.reemail;
@@ -30,6 +33,15 @@ router.post('/register', function (req, res) {
       });
   }else{
     res.render('../public/registro.ejs',{ error: '¡El email o la password no coinciden!'});
+  }
+});
+router.post('/login', function (req, res) {
+  var username = req.body.username;
+  var passwd = req.body.passwd;
+  if (User.exists({username: username, password: passwd})){
+    res.render('../public/index.ejs', { error: username });
+  }else{
+    res.render('../public/login.ejs',{error:'Usuario o contraseña equivocados.'});
   }
 });
 module.exports = router;
