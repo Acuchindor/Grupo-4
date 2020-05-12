@@ -38,11 +38,11 @@ router.post('/register', function (req, res) {
 router.post('/login', function (req, res) {
   var username = req.body.username;
   var passwd = req.body.passwd;
-  mongoose.usuarios.exists({username: username, password: passwd}, function(err, result){
-    if (err){
-      res.render('../public/login.ejs',{error:'Usuario o contraseña equivocados.'});
-    }else{
+  User.exists({username: username, password: passwd}, function(err, result){
+    if (result){
       res.render('../public/index.ejs', { error: username });
+    }else{
+      res.render('../public/login.ejs',{error:'Usuario o contraseña equivocados.'});
     }
   });
 });
