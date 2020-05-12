@@ -25,13 +25,11 @@ router.post('/register', function (req, res) {
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
     var usuario = new User({email: email, username: username, password: passwd});
     usuario.save(function (err) {
-        if (err) res.render('registro', {error: 'este mensaje'});
-        else res.send('¡Has sido registrado!');
-        res.end();
+        if (err) ejs.render('registro', {error: 'este mensaje'});
+        else ejs.render('registro', {error: '¡Has sido registrado!'});
       });
   }else{
-    res.send('¡El email o la password no coinciden!');
-    res.end();
+    ejs.send('registro',{ error: '¡El email o la password no coinciden!'});
   }
 });
 module.exports = router;
