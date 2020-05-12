@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost:27017/MONGOL", {
 });
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('../public/index.ejs', { error: 'LOGIN' });
 });
 router.get('/register', function (req, res) {
   res.render('../public/registro.ejs',{error:''});
@@ -38,10 +38,12 @@ router.post('/register', function (req, res) {
 router.post('/login', function (req, res) {
   var username = req.body.username;
   var passwd = req.body.passwd;
-  if (User.exists({username: username, password: passwd})){
-    res.render('../public/index.ejs', { error: username });
-  }else{
-    res.render('../public/login.ejs',{error:'Usuario o contraseña equivocados.'});
-  }
+  User.exists({username: username, password: passwd}, function(err, result){
+    if (err){
+      res.render('../public/login.ejs',{error:'Usuario o contraseña equivocados.'});
+    }else{
+      res.render('../public/index.ejs', { error: username });
+    }
+  });
 });
 module.exports = router;
