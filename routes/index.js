@@ -1,5 +1,5 @@
 var express = require('express');
-var registroHTML = 'C:/Users/crist/Desktop/untitled/public/registro.html';
+var registroHTML = 'C:/Users/crist/Desktop/untitled/public/registro.ejs';
 var router = express.Router();
 var path = require('path');
 var User = require('../lib/User');
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/register', function (req, res) {
-  res.sendFile(path.join(registroHTML));
+  res.render(registroHTML, {});
 });
 router.post('/register', function (req, res) {
   var email = req.body.email;
@@ -24,12 +24,10 @@ router.post('/register', function (req, res) {
   var username = req.body.username;
   var passwd = req.body.passwd;
   var repasswd = req.body.passwd;
-  var html = fs.readFileSync(registroHTML);
   if (email.toString() == reemail.toString() && passwd.toString() == repasswd.toString()){
     var usuario = new User({email: email, username: username, password: passwd});
     usuario.save(function (err) {
-        // if (err) res.send('¡Este usuario o email ya ha sido registrado!');
-        if (err) res.json({html: html.toString(), message: 'este mensaje'});
+        if (err) res.render('registro', {error: 'este mensaje'});
         else res.send('¡Has sido registrado!');
         res.end();
       });

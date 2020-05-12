@@ -1,8 +1,3 @@
 function Perfil() {
- window.location.href = "/registro.html"
+ window.location.href = "/register"
 }
-$(document).ready(function () {
- $.postJSON('/register', function (object) {
-  $("div").append(object[html]);
- });
-});
