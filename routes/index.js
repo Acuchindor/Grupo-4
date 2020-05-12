@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/register', function (req, res) {
-  ejs.render('registro',{error:''});
+  ejs.renderFile('C:/Users/crist/Desktop/untitled/public/registro.ejs',{error:''});
 });
 router.post('/register', function (req, res) {
   var email = req.body.email;
