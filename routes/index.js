@@ -1,7 +1,6 @@
 var express = require('express');
 var registroHTML = 'C:/Users/crist/Desktop/untitled/public/registro.ejs';
 var router = express.Router();
-var path = require('path');
 var User = require('../lib/User');
 var mongoose = require('mongoose');
 const fs = require('fs');
@@ -15,6 +14,7 @@ mongoose.connect("mongodb://localhost:27017/MONGOL", {
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+router.set('view engine', 'ejs');
 router.get('/register', function (req, res) {
   res.render(registroHTML, {});
 });
