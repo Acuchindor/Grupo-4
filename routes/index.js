@@ -3,6 +3,14 @@ var ejs = require('ejs');
 var router = express.Router();
 var User = require('../lib/User');
 var mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Mikel:Almi123@losgansos-lnodt.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 mongoose.connect("mongodb://localhost:27017/MONGOL", {
   "auth": { "authSource": "MONGOL" },
   "user": "Admin",
