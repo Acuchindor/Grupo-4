@@ -11,12 +11,12 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });
-mongoose.connect("mongodb://localhost:27017/MONGOL", {
+mongoose.connect("mongodb+srv://Mikel:Almi123@losgansos-lnodt.mongodb.net/test?retryWrites=true&w=majority"/*, {
   "auth": { "authSource": "MONGOL" },
   "user": "Admin",
   "pass": "Almi123",
   "useMongoClient": true
-});
+}*/);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('../public/index.ejs', { error: 'LOGIN' });
