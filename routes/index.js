@@ -1,3 +1,4 @@
+//Aquí llamamos las variables y les decimos que extensiones requiere
 var express = require('express');
 var ejs = require('ejs');
 var router = express.Router();
@@ -6,13 +7,14 @@ var mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Mikel:Almi123@losgansos-lnodt.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+//Aqui conectamos el node con las bases de datos
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
   client.close();
 });
 mongoose.connect("mongodb+srv://Mikel:Almi123@losgansos-lnodt.mongodb.net/test?retryWrites=true&w=majority");
-/* GET home page. */
+//Aqui pillamos los gets y le decimos que hace cada uno
 router.get('/', function(req, res, next) {
   res.render('../public/index.ejs', { error: 'LOGIN' });
 });
@@ -22,6 +24,7 @@ router.get('/register', function (req, res) {
 router.get('/login', function (req, res) {
   res.render('../public/login.ejs',{error:''});
 });
+//Aqui pillamos los posts y recogemos lo que nos envian para usarlo
 router.post('/register', function (req, res) {
   var email = req.body.email;
   var reemail = req.body.reemail;
