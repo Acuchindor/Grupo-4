@@ -41,6 +41,9 @@ router.post('/register', function (req, res) {
     res.render('../public/registro.ejs',{ error: '¡El email o la password no coinciden!'});
   }
 });
+router.post('/users', function (req, res){
+    res.render(client.db("MONGOL").collection("usuarios").find());
+});
 router.post('/login', function (req, res) {
   var username = req.body.username;
   var passwd = req.body.passwd;
