@@ -7,10 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheets/style.css">
     <title>Registro</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON('/usuarios', function (data) {
+                for(var i = 0; i<data.length; i++){
+                    var fila = `<tr>${data[i].username}</tr>`;
+                    $('#mierda').append(fila);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <section>
     <h2><%=error%></h2>
+    <div id="mierda"></div>
     <h1>REGISTRO</h1>
     <form action="/register" method="post">
         <div>mail: <input type="email" name="email"><br></div>
